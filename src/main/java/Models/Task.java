@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 public class Task {
@@ -13,4 +14,5 @@ public class Task {
     @Setter
     private String description;
     private LocalDateTime createdDate;
+    private List<Comment> commentsList;
 }
