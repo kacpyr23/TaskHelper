@@ -1,4 +1,4 @@
-package pl.koziol.taskhelper.repositories;
+package pl.koziol.taskhelper.Repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import pl.koziol.taskhelper.Models.AttachedFile;
