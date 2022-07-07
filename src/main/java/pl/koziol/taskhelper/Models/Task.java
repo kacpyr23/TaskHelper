@@ -1,4 +1,4 @@
-package Models;
+package pl.koziol.taskhelper.Models;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
