@@ -32,7 +32,7 @@ public class Comment {
     private Task task;
     @JsonManagedReference
     @OneToMany(mappedBy = "comment")
-    private List<AttachedFile> attachedFilesList;
+    private List<AttachedFileInfo> attachedFilesInfoList;
 
     public Comment(String title, String comment, Task task) {
         this.title = title;

@@ -13,10 +13,10 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class AttachedFile {
+public class AttachedFileInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long attachedFileId;
+    private Long attachedFileInfoId;
     private String name;
     private Long size;
     private String path;
