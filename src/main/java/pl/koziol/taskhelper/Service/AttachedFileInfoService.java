@@ -6,6 +6,7 @@ import pl.koziol.taskhelper.Models.AttachedFileInfo;
 import pl.koziol.taskhelper.Repositories.AttachedFileInfoRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AttachedFileInfoService {
@@ -17,8 +18,8 @@ public class AttachedFileInfoService {
         return attachedFileInfoRepository.findAll();
     }
 
-    public AttachedFileInfo getAttachedFileInfo(Long id) {
-        return attachedFileInfoRepository.getReferenceById(id);
+    public Optional<AttachedFileInfo> getAttachedFileInfoById(Long AttachedFileInfoId) {
+        return attachedFileInfoRepository.getAttachedFileInfoByAttachedFileInfoId(AttachedFileInfoId);
     }
 
     public Long create(AttachedFileInfo attachedFileInfo){

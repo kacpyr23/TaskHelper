@@ -24,8 +24,9 @@ public class Comment {
     private String title;
     @Setter
     private String comment;
-    @CreatedDate
+    @Setter
     private LocalDateTime createdTime;
+    @Setter
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "taskId", nullable = false)

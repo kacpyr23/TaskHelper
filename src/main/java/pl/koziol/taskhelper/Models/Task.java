@@ -27,7 +27,7 @@ public class Task {
     private String name;
     @Setter
     private String description;
-    @CreatedDate
+    @Setter
     private LocalDateTime createdDate;
     @JsonManagedReference
     @OneToMany(mappedBy = "task")

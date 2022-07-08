@@ -6,6 +6,7 @@ import pl.koziol.taskhelper.Models.Comment;
 import pl.koziol.taskhelper.Repositories.CommentRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CommentService {
@@ -21,8 +22,8 @@ public class CommentService {
         return commentRepository.getCommentsByTaskId(taskId);
     }
 
-    public Comment getComment(Long id) {
-        return commentRepository.getReferenceById(id);
+    public Optional<Comment> getComment(Long commentId) {
+        return commentRepository.getCommentByCommentId(commentId);
     }
 
     public Long create(Comment comment){

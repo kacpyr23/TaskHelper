@@ -6,9 +6,12 @@ import org.springframework.data.repository.query.Param;
 import pl.koziol.taskhelper.Models.Comment;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CommentRepository extends JpaRepository<Comment, Long> {
 
     @Query(value = "SELECT * FROM Comment c WHERE c.taskId = :id", nativeQuery = true)
-    public List<Comment> getCommentsByTaskId(@Param("id") Long id);
+    List<Comment> getCommentsByTaskId(@Param("id") Long id);
+
+    Optional<Comment> getCommentByCommentId(Long commentId);
 }

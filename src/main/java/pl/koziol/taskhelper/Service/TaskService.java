@@ -6,6 +6,7 @@ import pl.koziol.taskhelper.Models.Task;
 import pl.koziol.taskhelper.Repositories.TaskRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TaskService {
@@ -17,8 +18,8 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
-    public Task getTask(Long id) {
-        return taskRepository.getReferenceById(id);
+    public Optional<Task> getTask(Long taskId) {
+        return taskRepository.getTaskByTaskId(taskId);
     }
 
     public Long create(Task task){
