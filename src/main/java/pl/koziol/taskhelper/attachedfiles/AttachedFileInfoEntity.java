@@ -1,10 +1,11 @@
-package pl.koziol.taskhelper.Models;
+package pl.koziol.taskhelper.attachedfiles;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.koziol.taskhelper.tasks.comment.CommentDataEntity;
 
 import javax.persistence.*;
 
@@ -13,7 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class AttachedFileInfo {
+public class AttachedFileInfoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long attachedFileInfoId;
@@ -23,6 +24,6 @@ public class AttachedFileInfo {
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "commentId", nullable = false)
-    private Comment comment;
+    private CommentDataEntity comment;
 
 }

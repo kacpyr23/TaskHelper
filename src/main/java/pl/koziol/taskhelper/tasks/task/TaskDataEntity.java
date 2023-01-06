@@ -1,11 +1,11 @@
-package pl.koziol.taskhelper.Models;
+package pl.koziol.taskhelper.tasks.task;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
+import pl.koziol.taskhelper.tasks.comment.CommentDataEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +19,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Task {
+public class TaskDataEntity {
     @Id
     @GeneratedValue
     private Long taskId;
@@ -31,9 +31,9 @@ public class Task {
     private LocalDateTime createdDate;
     @JsonManagedReference
     @OneToMany(mappedBy = "task")
-    private List<Comment> commentsList;
+    private List<CommentDataEntity> commentsList;
 
-    public Task(String name, String description) {
+    public TaskDataEntity(String name, String description) {
         this.name = name;
         this.description = description;
         this.commentsList = new ArrayList<>();

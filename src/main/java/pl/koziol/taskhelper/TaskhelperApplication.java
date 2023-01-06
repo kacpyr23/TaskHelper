@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @EnableJpaAuditing
 public class TaskhelperApplication {
 
-    private static final Logger log = LoggerFactory.getLogger(TaskhelperApplication.class);
+    public static final Logger log = LoggerFactory.getLogger(TaskhelperApplication.class);
 
     public static void main(String[] args) {
         SpringApplication.run(TaskhelperApplication.class, args);

@@ -1,4 +1,4 @@
-package pl.koziol.taskhelper.Models;
+package pl.koziol.taskhelper.tasks.comment;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -6,7 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
+import pl.koziol.taskhelper.tasks.task.TaskDataEntity;
+import pl.koziol.taskhelper.attachedfiles.AttachedFileInfoEntity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -16,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Comment {
+public class CommentDataEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long commentId;
@@ -30,14 +31,14 @@ public class Comment {
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "taskId", nullable = false)
-    private Task task;
+    private TaskDataEntity task;
     @JsonManagedReference
     @OneToMany(mappedBy = "comment")
-    private List<AttachedFileInfo> attachedFilesInfoList;
+    private List<AttachedFileInfoEntity> attachedFilesInfoList;
 
-    public Comment(String title, String comment, Task task) {
+    public CommentDataEntity(String title, String comment, TaskDataEntity taskDataEntity) {
         this.title = title;
         this.comment = comment;
-        this.task = task;
+        this.task = taskDataEntity;
     }
 }
