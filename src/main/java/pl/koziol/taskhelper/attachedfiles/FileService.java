@@ -1,14 +1,13 @@
-package pl.koziol.taskhelper.Service;
+package pl.koziol.taskhelper.attachedfiles;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.source.MapConfigurationPropertySource;
+import lombok.AllArgsConstructor;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import pl.koziol.taskhelper.Configuration.PathConfig;
-import pl.koziol.taskhelper.Models.AttachedFileInfo;
-import pl.koziol.taskhelper.Models.Comment;
+import pl.koziol.taskhelper.tasks.comment.CommentDataEntity;
+import pl.koziol.taskhelper.tasks.comment.CommentService;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,19 +17,15 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 
 @Service
+@AllArgsConstructor
 public class FileService {
 
-    @Autowired
     private AttachedFileInfoService attachedFileInfoService;
-
-    @Autowired
     private CommentService commentService;
-
-    @Autowired
     PathConfig pathConfig;
 
     public Resource getFile(Long id) throws MalformedURLException {
-        AttachedFileInfo attachedFileInfo = attachedFileInfoService.getAttachedFileInfoById(id).isPresent()?attachedFileInfoService.getAttachedFileInfoById(id).get():null;
+        AttachedFileInfoEntity attachedFileInfo = attachedFileInfoService.getAttachedFileInfoById(id);
         if(attachedFileInfo==null){
             return null;
         }
@@ -43,16 +38,16 @@ public class FileService {
         }
     }
 
-    public void saveFile(MultipartFile newFile, String name, Comment comment) throws IOException {
+    public void saveFile(MultipartFile newFile, String name, CommentDataEntity commentDataEntity) throws IOException {
         Path path = Path.of(pathConfig.getPath()+name);
         Files.copy(newFile.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-        AttachedFileInfo attachedFileInfo = new AttachedFileInfo();
+        AttachedFileInfoEntity attachedFileInfo = new AttachedFileInfoEntity();
         attachedFileInfo.setName(name);
-        attachedFileInfo.setComment(comment);
+        attachedFileInfo.setComment(commentDataEntity);
         attachedFileInfo.setPath(path.toString());
         attachedFileInfo.setSize(Files.size(path));
         attachedFileInfoService.create(attachedFileInfo);
-        comment.getAttachedFilesInfoList().add(attachedFileInfo);
-        commentService.update(comment);
+        commentDataEntity.getAttachedFilesInfoList().add(attachedFileInfo);
+        commentService.update(commentDataEntity);
     }
 }
