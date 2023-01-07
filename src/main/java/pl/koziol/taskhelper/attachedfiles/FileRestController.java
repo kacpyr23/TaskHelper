@@ -23,7 +23,6 @@ public class FileRestController {
 
     private FileService fileService;
     private CommentService commentService;
-    private AttachedFileInfoService attachedFileInfoService;
 
     @GetMapping("/{id}")
     public ResponseEntity<Resource> getFileById(@PathVariable("id") Long id, HttpServletRequest request) throws MalformedURLException {
@@ -45,7 +44,7 @@ public class FileRestController {
     }
 
     @PostMapping("/comment/{id}")
-    public void getFile(@PathVariable("id") Long id, @RequestParam("file") MultipartFile file) throws IOException {
+    public void saveFile(@PathVariable("id") Long id, @RequestParam("file") MultipartFile file) throws IOException {
         CommentDataEntity commentDataEntity = commentService.getCommentDataEntity(id);
         if(commentDataEntity == null){
             return;
