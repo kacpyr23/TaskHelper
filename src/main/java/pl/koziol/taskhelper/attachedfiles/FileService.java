@@ -6,8 +6,8 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import pl.koziol.taskhelper.Configuration.PathConfig;
-import pl.koziol.taskhelper.tasks.comment.CommentDataEntity;
-import pl.koziol.taskhelper.tasks.comment.CommentService;
+import pl.koziol.taskhelper.comment.CommentDataEntity;
+import pl.koziol.taskhelper.comment.CommentService;
 
 import java.io.File;
 import java.io.IOException;
@@ -47,7 +47,7 @@ public class FileService {
         attachedFileInfo.setPath(path.toString());
         attachedFileInfo.setSize(Files.size(path));
         attachedFileInfoService.create(attachedFileInfo);
-        commentDataEntity.getAttachedFilesInfoList().add(attachedFileInfo);
+        commentDataEntity.getAttachedFiles().add(attachedFileInfo);
         commentService.update(commentDataEntity);
     }
 }

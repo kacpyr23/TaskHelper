@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pl.koziol.taskhelper.tasks.comment.CommentDataEntity;
+import pl.koziol.taskhelper.comment.CommentDataEntity;
 
 import javax.persistence.*;
 

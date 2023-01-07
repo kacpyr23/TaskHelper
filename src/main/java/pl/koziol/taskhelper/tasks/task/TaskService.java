@@ -2,6 +2,10 @@ package pl.koziol.taskhelper.tasks.task;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.koziol.taskhelper.comment.CommentDataEntity;
+import pl.koziol.taskhelper.comment.CommentDataMapper;
+import pl.koziol.taskhelper.comment.CommentService;
+import pl.koziol.taskhelper.comment.dto.CommentDataRequestDto;
 import pl.koziol.taskhelper.tasks.task.dto.CreateTaskDataRequestDto;
 import pl.koziol.taskhelper.tasks.task.dto.TaskDataRequestDto;
 import pl.koziol.taskhelper.tasks.task.dto.TaskDataResponseDto;
@@ -19,6 +23,10 @@ public class TaskService {
     private TaskRepository taskRepository;
 
     private TaskDataMapper taskDataMapper;
+    
+    private CommentDataMapper commentDataMapper;
+    
+    private CommentService commentService;
 
     public TasksDataResponseDto getAllTasks() {
         List<TaskDataResponseDto> tasksResponses = taskRepository.findAll().stream()
@@ -56,6 +64,16 @@ public class TaskService {
     
     public TaskDataEntity updateTaskDataWithComments(TaskDataEntity taskDataEntity) {
         return taskRepository.save(taskDataEntity);
+    }
+    
+    public TaskDataResponseDto createCommentForTask(Long taskId, CommentDataRequestDto commentDataRequestDto) {
+        TaskDataEntity taskData = getTask(taskId);
+        CommentDataEntity commentData = commentDataMapper.mapToCommentDataEntity(commentDataRequestDto);
+        commentData.setCreatedDate(LocalDateTime.now());
+        commentData.setTask(taskData);
+        commentService.update(commentData);
+        taskData = getTask(taskId);
+        return taskDataMapper.mapToTaskDataResponseDto(taskData);
     }
 
     public void deleteById(Long id){

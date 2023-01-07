@@ -7,8 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import pl.koziol.taskhelper.tasks.comment.CommentDataEntity;
-import pl.koziol.taskhelper.tasks.comment.CommentService;
+import pl.koziol.taskhelper.comment.CommentDataEntity;
+import pl.koziol.taskhelper.comment.CommentService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -46,7 +46,7 @@ public class FileRestController {
 
     @PostMapping("/comment/{id}")
     public void getFile(@PathVariable("id") Long id, @RequestParam("file") MultipartFile file) throws IOException {
-        CommentDataEntity commentDataEntity = commentService.getComment(id);
+        CommentDataEntity commentDataEntity = commentService.getCommentDataEntity(id);
         if(commentDataEntity == null){
             return;
         }
