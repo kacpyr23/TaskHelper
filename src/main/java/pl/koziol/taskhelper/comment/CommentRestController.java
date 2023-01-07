@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import pl.koziol.taskhelper.comment.dto.CommentsDataResponseDto;
 import pl.koziol.taskhelper.comment.dto.CommentDataRequestDto;
 import pl.koziol.taskhelper.comment.dto.CommentDataResponseDto;
-import pl.koziol.taskhelper.tasks.task.TaskService;
-import pl.koziol.taskhelper.tasks.task.dto.TaskDataResponseDto;
+import pl.koziol.taskhelper.task.TaskService;
+import pl.koziol.taskhelper.task.dto.TaskDataResponseDto;
 
 @RestController
 @RequestMapping("/comment")

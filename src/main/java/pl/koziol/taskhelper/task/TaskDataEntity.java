@@ -1,4 +1,4 @@
-package pl.koziol.taskhelper.tasks.task;
+package pl.koziol.taskhelper.task;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;

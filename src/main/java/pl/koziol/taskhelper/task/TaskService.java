@@ -1,4 +1,4 @@
-package pl.koziol.taskhelper.tasks.task;
+package pl.koziol.taskhelper.task;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -6,10 +6,10 @@ import pl.koziol.taskhelper.comment.CommentDataEntity;
 import pl.koziol.taskhelper.comment.CommentDataMapper;
 import pl.koziol.taskhelper.comment.CommentService;
 import pl.koziol.taskhelper.comment.dto.CommentDataRequestDto;
-import pl.koziol.taskhelper.tasks.task.dto.CreateTaskDataRequestDto;
-import pl.koziol.taskhelper.tasks.task.dto.TaskDataRequestDto;
-import pl.koziol.taskhelper.tasks.task.dto.TaskDataResponseDto;
-import pl.koziol.taskhelper.tasks.task.dto.TasksDataResponseDto;
+import pl.koziol.taskhelper.task.dto.CreateTaskDataRequestDto;
+import pl.koziol.taskhelper.task.dto.TaskDataRequestDto;
+import pl.koziol.taskhelper.task.dto.TaskDataResponseDto;
+import pl.koziol.taskhelper.task.dto.TasksDataResponseDto;
 
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;

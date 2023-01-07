@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pl.koziol.taskhelper.tasks.task.TaskDataEntity;
+import pl.koziol.taskhelper.task.TaskDataEntity;
 import pl.koziol.taskhelper.attachedfiles.AttachedFileInfoEntity;
 
 import javax.persistence.*;

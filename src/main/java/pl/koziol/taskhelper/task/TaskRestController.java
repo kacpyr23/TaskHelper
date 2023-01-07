@@ -1,13 +1,13 @@
-package pl.koziol.taskhelper.tasks.task;
+package pl.koziol.taskhelper.task;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.koziol.taskhelper.tasks.task.dto.CreateTaskDataRequestDto;
-import pl.koziol.taskhelper.tasks.task.dto.TaskDataRequestDto;
-import pl.koziol.taskhelper.tasks.task.dto.TaskDataResponseDto;
-import pl.koziol.taskhelper.tasks.task.dto.TasksDataResponseDto;
+import pl.koziol.taskhelper.task.dto.CreateTaskDataRequestDto;
+import pl.koziol.taskhelper.task.dto.TaskDataRequestDto;
+import pl.koziol.taskhelper.task.dto.TaskDataResponseDto;
+import pl.koziol.taskhelper.task.dto.TasksDataResponseDto;
 
 import java.util.Optional;
 
