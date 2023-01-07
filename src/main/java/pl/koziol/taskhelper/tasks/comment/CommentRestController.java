@@ -52,10 +52,10 @@ public class CommentRestController {
         }
         TaskDataEntity taskDataEntity = taskService.getTask(taskId);
         commentDataEntity.setCreatedTime(LocalDateTime.now());
-        taskDataEntity.getCommentsList().add(commentDataEntity);
+        taskDataEntity.getComments().add(commentDataEntity);
         commentDataEntity.setTask(taskDataEntity);
         Long commentId = commentService.create(commentDataEntity);
-        taskService.update(taskDataEntity);
+        taskService.updateTaskDataWithComments(taskDataEntity);
         return new ResponseEntity<>(commentId, HttpStatus.OK);
     }
 }
