@@ -43,7 +43,6 @@ public class FileService {
         Files.copy(newFile.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
         AttachedFileInfoEntity attachedFileInfo = new AttachedFileInfoEntity();
         attachedFileInfo.setName(name);
-        attachedFileInfo.setComment(commentDataEntity);
         attachedFileInfo.setPath(path.toString());
         attachedFileInfo.setSize(Files.size(path));
         attachedFileInfoService.create(attachedFileInfo);

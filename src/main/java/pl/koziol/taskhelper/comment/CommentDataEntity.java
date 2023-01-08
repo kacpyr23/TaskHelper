@@ -34,6 +34,6 @@ public class CommentDataEntity {
     private TaskDataEntity task;
     
     @JsonManagedReference
-    @OneToMany(mappedBy = "comment")
+    @OneToMany
     private List<AttachedFileInfoEntity> attachedFiles;
 }
