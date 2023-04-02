@@ -8,6 +8,8 @@ import pl.koziol.taskhelper.comment.dto.CommentDataResponseDto;
 @Mapper(componentModel = "spring")
 public interface CommentDataMapper {
 	
+	@Mapping(target = "id", ignore = true)
+	@Mapping(target = "createdDate", ignore = true)
 	CommentDataEntity mapToCommentDataEntity(CommentDataRequestDto requestDto);
 	
 	@Mapping(target = "created", source = "createdDate")

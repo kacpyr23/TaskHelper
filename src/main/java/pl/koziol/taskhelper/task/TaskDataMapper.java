@@ -9,6 +9,8 @@ import pl.koziol.taskhelper.task.dto.TaskDataResponseDto;
 @Mapper(componentModel = "spring", uses = {CommentDataMapper.class})
 public interface TaskDataMapper {
 
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "createdDate", ignore = true)
     TaskDataEntity mapToTaskDataEntity(CreateTaskDataRequestDto requestDto);
 
     @Mapping(target = "created", source = "createdDate")
